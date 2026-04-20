@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ssh *)",
+      "Bash(npx *)",
+      "Bash(pm2 *)",
+      "Bash(docker *)",
+      "Bash(kill *)",
+      "Bash(rm *)",
+      "Bash(npm run build)",
+      "Bash(npm run dev)",
+      "Bash(npm run test)",
+      "Bash(npm run lint)",
+      "Bash(npm run start)",
+      "Bash(npm ci)",
+      "Bash(npm install *)",
+      "Bash(npm install)"
+    ]
+  }
+}
