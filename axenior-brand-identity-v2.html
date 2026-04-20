@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AXENIOR — Brand Identity Guide v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ax-deep: #0a0e17;
+    --ax-navy: #0f1628;
+    --ax-dark: #151d30;
+    --ax-slate: #2a3550;
+    --ax-mid: #5a6785;
+    --ax-silver: #94a3b8;
+    --ax-light: #e8edf5;
+    --ax-white: #f8f9fc;
+    --ax-blue: #3b82f6;
+    --ax-blue-light: #60a5fa;
+    --ax-blue-glow: rgba(59,130,246,0.15);
+    --ax-cyan: #22d3ee;
+    --ax-violet: #8b5cf6;
+    --ax-gradient: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    --ax-gradient-subtle: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(139,92,246,0.08));
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--ax-white);
+    color: var(--ax-deep);
+    overflow-x: hidden;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: var(--ax-deep);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(ellipse at 30% 40%, rgba(59,130,246,0.1) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 60%, rgba(139,92,246,0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 80%, rgba(34,211,238,0.05) 0%, transparent 40%);
+  }
+
+  .hero-grid {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .hero-nodes {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    overflow: hidden;
+  }
+
+  .node {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--ax-blue);
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: pulse 3s infinite;
+  }
+
+  .node:nth-child(1) { top: 15%; left: 10%; animation-delay: 0s; }
+  .node:nth-child(2) { top: 25%; left: 85%; animation-delay: 0.5s; }
+  .node:nth-child(3) { top: 70%; left: 20%; animation-delay: 1s; }
+  .node:nth-child(4) { top: 80%; left: 75%; animation-delay: 1.5s; }
+  .node:nth-child(5) { top: 45%; left: 92%; animation-delay: 2s; }
+  .node:nth-child(6) { top: 60%; left: 5%; animation-delay: 0.7s; }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.2; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(2); }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+  }
+
+  .hero-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ax-blue);
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    padding: 6px 20px;
+    border: 1px solid rgba(59,130,246,0.25);
+    border-radius: 20px;
+    display: inline-block;
+    background: rgba(59,130,246,0.05);
+    animation: fadeIn 1s ease-out;
+  }
+
+  .logo-main {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 12vw, 160px);
+    letter-spacing: 0.12em;
+    line-height: 1;
+    margin-bottom: 12px;
+    animation: logoReveal 1.2s ease-out;
+  }
+
+  .logo-main .ax {
+    background: var(--ax-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .logo-main .enior { color: var(--ax-silver); }
+
+  @keyframes logoReveal {
+    from { opacity: 0; transform: translateY(30px); letter-spacing: 0.3em; }
+    to { opacity: 1; transform: translateY(0); letter-spacing: 0.12em; }
+  }
+
+  .divider-line {
+    width: 48px;
+    height: 2px;
+    background: var(--ax-gradient);
+    margin: 28px auto;
+    animation: lineGrow 1s ease-out 0.3s both;
+  }
+
+  @keyframes lineGrow { from { width: 0; } to { width: 48px; } }
+
+  .tagline-en {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(13px, 1.6vw, 17px);
+    font-weight: 300;
+    color: var(--ax-silver);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    animation: fadeIn 1.5s ease-out 0.5s both;
+  }
+
+  .tagline-kr {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+    font-size: clamp(14px, 1.8vw, 20px);
+    color: var(--ax-mid);
+    letter-spacing: 0.12em;
+    animation: fadeIn 1.5s ease-out 0.8s both;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--ax-mid);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    font-family: 'JetBrains Mono', monospace;
+    animation: bounce 2s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* ===== SECTIONS ===== */
+  section {
+    padding: 100px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--ax-blue);
+    letter-spacing: 0.3em;
+    margin-bottom: 12px;
+    font-weight: 700;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(32px, 5vw, 56px);
+    letter-spacing: 0.08em;
+    color: var(--ax-deep);
+    margin-bottom: 16px;
+    line-height: 1.1;
+  }
+
+  .section-subtitle {
+    font-size: 15px;
+    color: var(--ax-mid);
+    font-weight: 300;
+    line-height: 1.8;
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  /* ===== BRAND STORY ===== */
+  .story-section {
+    background: var(--ax-deep);
+    padding: 100px 40px;
+    max-width: 100%;
+  }
+
+  .story-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .story-section .section-title { color: white; }
+
+  /* AX Equation */
+  .ax-equation {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 40px 0;
+    flex-wrap: wrap;
+  }
+
+  .eq-block {
+    padding: 16px 28px;
+    border-radius: 8px;
+    font-family: 'Sora', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+  }
+
+  .eq-block.ai {
+    background: rgba(59,130,246,0.12);
+    border: 1px solid rgba(59,130,246,0.3);
+    color: var(--ax-blue-light);
+  }
+
+  .eq-block.ai .small {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--ax-blue);
+    letter-spacing: 0.15em;
+    margin-top: 4px;
+  }
+
+  .eq-block.x {
+    background: rgba(139,92,246,0.12);
+    border: 1px solid rgba(139,92,246,0.3);
+    color: var(--ax-violet);
+  }
+
+  .eq-block.x .small {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--ax-violet);
+    letter-spacing: 0.15em;
+    margin-top: 4px;
+  }
+
+  .eq-plus {
+    font-family: 'Sora', sans-serif;
+    font-size: 24px;
+    color: var(--ax-mid);
+    font-weight: 300;
+  }
+
+  .eq-result {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    letter-spacing: 0.1em;
+    padding: 12px 32px;
+    border-radius: 8px;
+    border: 2px solid rgba(59,130,246,0.4);
+    background: rgba(59,130,246,0.05);
+  }
+
+  .eq-result .ax-grad {
+    background: var(--ax-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .eq-result .rest {
+    color: var(--ax-silver);
+  }
+
+  .dx-compare {
+    margin: 32px 0;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .dx-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    padding: 8px 18px;
+    border-radius: 6px;
+    border: 1px solid var(--ax-slate);
+    color: var(--ax-silver);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .dx-tag .label {
+    color: var(--ax-mid);
+    font-size: 10px;
+  }
+
+  .dx-tag.highlight {
+    border-color: rgba(59,130,246,0.4);
+    color: var(--ax-blue-light);
+    background: rgba(59,130,246,0.05);
+  }
+
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-top: 48px;
+  }
+
+  .story-block h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--ax-blue);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(59,130,246,0.2);
+    font-weight: 700;
+  }
+
+  .story-block p {
+    color: var(--ax-silver);
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.9;
+  }
+
+  .story-block .hl {
+    color: white;
+    font-weight: 500;
+  }
+
+  .story-block .hl-blue {
+    color: var(--ax-blue-light);
+    font-weight: 500;
+  }
+
+  /* ===== LOGO SYSTEM ===== */
+  .logo-variants {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+  }
+
+  .logo-card {
+    border-radius: 12px;
+    padding: 48px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    position: relative;
+  }
+
+  .logo-card.dark { background: var(--ax-deep); }
+  .logo-card.light { background: var(--ax-light); }
+  .logo-card.grad { background: var(--ax-gradient); }
+
+  .logo-card .logo-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    letter-spacing: 0.12em;
+    line-height: 1;
+  }
+
+  .logo-card .logo-label {
+    position: absolute;
+    bottom: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .logo-card.dark .logo-label { color: var(--ax-mid); }
+  .logo-card.light .logo-label { color: var(--ax-mid); }
+  .logo-card.grad .logo-label { color: rgba(255,255,255,0.6); }
+
+  .logo-card .logo-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    margin-top: 8px;
+    text-transform: uppercase;
+  }
+
+  /* Icon variants */
+  .icon-section { text-align: center; margin-top: 48px; }
+
+  .ax-icon-grid {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-top: 32px;
+  }
+
+  .ax-icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .ax-icon-box {
+    width: 88px;
+    height: 88px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    letter-spacing: 0.08em;
+  }
+
+  .ax-icon-box.v1 { background: var(--ax-deep); }
+  .ax-icon-box.v1 span { background: var(--ax-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .ax-icon-box.v2 { background: var(--ax-gradient); color: white; }
+  .ax-icon-box.v3 { background: var(--ax-white); border: 2px solid var(--ax-deep); color: var(--ax-deep); }
+  .ax-icon-box.v4 { background: var(--ax-deep); border: 2px solid var(--ax-blue); }
+  .ax-icon-box.v4 span { color: var(--ax-blue); }
+
+  .ax-icon-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ax-mid);
+    letter-spacing: 0.1em;
+  }
+
+  /* ===== COLORS ===== */
+  .color-palette {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .color-swatch { border-radius: 12px; overflow: hidden; }
+
+  .color-swatch .swatch-block {
+    height: 110px;
+    position: relative;
+  }
+
+  .color-swatch .swatch-info {
+    padding: 14px 16px;
+    background: white;
+    border: 1px solid var(--ax-light);
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+  }
+
+  .swatch-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: var(--ax-deep);
+    margin-bottom: 3px;
+  }
+
+  .swatch-hex {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ax-mid);
+  }
+
+  .swatch-role {
+    font-size: 10px;
+    color: var(--ax-silver);
+    margin-top: 4px;
+  }
+
+  /* ===== TYPOGRAPHY ===== */
+  .type-showcase { margin-top: 40px; }
+
+  .type-row {
+    display: flex;
+    align-items: baseline;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--ax-light);
+    gap: 40px;
+  }
+
+  .type-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ax-blue);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    min-width: 120px;
+    flex-shrink: 0;
+    font-weight: 700;
+  }
+
+  .type-sample { flex: 1; }
+
+  .type-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ax-silver);
+    min-width: 180px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  /* ===== SLOGAN ===== */
+  .slogan-cards {
+    display: grid;
+    gap: 20px;
+    margin-top: 40px;
+  }
+
+  .slogan-card {
+    background: var(--ax-deep);
+    border-radius: 12px;
+    padding: 40px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .slogan-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--ax-gradient);
+  }
+
+  .slogan-card.recommended {
+    border: 1px solid rgba(59,130,246,0.3);
+  }
+
+  .slogan-card.recommended::after {
+    content: '★ 추천';
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ax-blue);
+    letter-spacing: 0.1em;
+  }
+
+  .slogan-main {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(20px, 2.8vw, 30px);
+    color: white;
+    font-weight: 400;
+    line-height: 1.4;
+    margin-bottom: 8px;
+    letter-spacing: 0.02em;
+  }
+
+  .slogan-kr {
+    font-size: 15px;
+    color: var(--ax-silver);
+    font-weight: 300;
+    margin-bottom: 12px;
+  }
+
+  .slogan-use {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ax-mid);
+    letter-spacing: 0.1em;
+  }
+
+  /* ===== BUSINESS CARD ===== */
+  .card-preview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 40px;
+  }
+
+  .biz-card {
+    aspect-ratio: 9/5;
+    border-radius: 8px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+  }
+
+  .biz-card.front {
+    background: var(--ax-deep);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .biz-card.front::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%);
+  }
+
+  .biz-card.front::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 160px; height: 160px;
+    background: radial-gradient(circle, rgba(139,92,246,0.06) 0%, transparent 70%);
+  }
+
+  .biz-card.back {
+    background: var(--ax-white);
+    border: 1px solid var(--ax-light);
+  }
+
+  .card-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.12em;
+    position: relative;
+    z-index: 1;
+  }
+
+  .card-logo .ax {
+    background: var(--ax-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .card-logo .rest { color: var(--ax-silver); }
+
+  .card-bottom { position: relative; z-index: 1; }
+
+  .card-slogan {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: var(--ax-mid);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .card-ax-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    color: var(--ax-blue);
+    letter-spacing: 0.15em;
+    margin-top: 4px;
+    opacity: 0.7;
+  }
+
+  .card-back-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .card-name-kr {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ax-deep);
+    margin-bottom: 4px;
+  }
+
+  .card-title {
+    font-size: 11px;
+    color: var(--ax-mid);
+    font-weight: 300;
+  }
+
+  .card-back-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    color: var(--ax-silver);
+  }
+
+  .card-contact {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ax-mid);
+    line-height: 2;
+    letter-spacing: 0.02em;
+  }
+
+  /* ===== DOMAIN ===== */
+  .domain-list {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .domain-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    background: white;
+    border: 1px solid var(--ax-light);
+    border-radius: 8px;
+  }
+
+  .domain-item.primary {
+    border-color: var(--ax-blue);
+    background: rgba(59,130,246,0.02);
+  }
+
+  .domain-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ax-deep);
+  }
+
+  .domain-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    padding: 4px 10px;
+    border-radius: 4px;
+    text-transform: uppercase;
+  }
+
+  .domain-badge.rec { background: rgba(59,130,246,0.1); color: var(--ax-blue); }
+  .domain-badge.alt { background: var(--ax-light); color: var(--ax-mid); }
+
+  /* ===== TONE ===== */
+  .tone-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+  }
+
+  .tone-card {
+    padding: 32px;
+    border-radius: 12px;
+    border: 1px solid var(--ax-light);
+    background: white;
+  }
+
+  .tone-do {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ax-blue);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    font-weight: 700;
+  }
+
+  .tone-word {
+    font-family: 'Sora', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--ax-deep);
+    margin-bottom: 12px;
+  }
+
+  .tone-desc {
+    font-size: 13px;
+    color: var(--ax-mid);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ===== USE CASES ===== */
+  .usecase-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+  }
+
+  .usecase-card {
+    background: var(--ax-deep);
+    border-radius: 12px;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .usecase-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--ax-gradient);
+  }
+
+  .usecase-icon {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+
+  .usecase-title {
+    font-family: 'Sora', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 8px;
+  }
+
+  .usecase-desc {
+    font-size: 13px;
+    color: var(--ax-silver);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* ===== FOOTER ===== */
+  .guide-footer {
+    background: var(--ax-deep);
+    padding: 80px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .guide-footer::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(ellipse at 50% 50%, rgba(59,130,246,0.06) 0%, transparent 60%);
+  }
+
+  .footer-content { position: relative; z-index: 1; }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    letter-spacing: 0.15em;
+    margin-bottom: 12px;
+  }
+
+  .footer-logo .ax {
+    background: var(--ax-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .footer-logo .rest { color: var(--ax-silver); }
+
+  .footer-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ax-mid);
+    letter-spacing: 0.25em;
+    margin-bottom: 4px;
+  }
+
+  .footer-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ax-slate);
+    letter-spacing: 0.15em;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    section { padding: 60px 24px; }
+    .story-section { padding: 60px 24px; }
+    .story-grid { grid-template-columns: 1fr; gap: 40px; }
+    .logo-variants { grid-template-columns: 1fr; }
+    .color-palette { grid-template-columns: repeat(3, 1fr); }
+    .card-preview { grid-template-columns: 1fr; }
+    .domain-list { grid-template-columns: 1fr; }
+    .tone-grid { grid-template-columns: 1fr; }
+    .usecase-grid { grid-template-columns: 1fr; }
+    .type-row { flex-direction: column; gap: 8px; }
+    .type-meta { text-align: left; }
+    .ax-equation { gap: 12px; }
+    .eq-block { padding: 12px 20px; font-size: 15px; }
+    .eq-result { font-size: 36px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-nodes">
+    <div class="node"></div><div class="node"></div><div class="node"></div>
+    <div class="node"></div><div class="node"></div><div class="node"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">AI Transformation Partner</div>
+    <div class="logo-main">
+      <span class="ax">AX</span><span class="enior">ENIOR</span>
+    </div>
+    <div class="divider-line"></div>
+    <div class="tagline-en">AI Transformation, Senior Expertise</div>
+    <div class="tagline-kr">AI 전환의 시니어 파트너</div>
+  </div>
+  <div class="scroll-hint">↓ SCROLL</div>
+</div>
+
+<!-- 01. BRAND STORY -->
+<div class="story-section">
+  <div class="story-inner">
+    <div class="section-num">01</div>
+    <div class="section-title" style="color:white">BRAND STORY</div>
+
+    <div class="ax-equation">
+      <div class="eq-block ai">
+        A<span class="small">AI</span>
+      </div>
+      <div class="eq-plus">+</div>
+      <div class="eq-block x">
+        X<span class="small">Transformation</span>
+      </div>
+      <div class="eq-plus">+</div>
+      <div class="eq-block ai">
+        Senior<span class="small">시니어 전문성</span>
+      </div>
+      <div class="eq-plus">=</div>
+      <div class="eq-result">
+        <span class="ax-grad">AX</span><span class="rest">ENIOR</span>
+      </div>
+    </div>
+
+    <div class="dx-compare">
+      <div class="dx-tag">
+        <span class="label">DIGITAL</span> DX
+      </div>
+      <div class="dx-tag highlight">
+        <span class="label" style="color:var(--ax-blue)">AI</span> AX
+      </div>
+      <div class="dx-tag">
+        <span class="label">GREEN</span> GX
+      </div>
+      <div class="dx-tag">
+        <span class="label">CLOUD</span> CX
+      </div>
+    </div>
+
+    <div class="story-grid">
+      <div class="story-block">
+        <h3>WHY AX?</h3>
+        <p>
+          DX(Digital Transformation) 시대를 지나,
+          이제는 <span class="hl-blue">AX(AI Transformation)</span>의 시대입니다.<br><br>
+          Axenior는 이 전환을 이끄는 <span class="hl">시니어 전문가</span>입니다.
+          제조 현장의 SPC부터 AI 기반 품질 관리까지,
+          <span class="hl">현장을 아는 사람</span>이 AI를 설계합니다.<br><br>
+          기술만 아는 것이 아니라, <span class="hl-blue">어디에 AI가 필요한지</span>를 압니다.
+        </p>
+      </div>
+      <div class="story-block">
+        <h3>POSITIONING</h3>
+        <p>
+          Axenior는 <span class="hl">1인 전문 기술 기업</span>입니다.<br><br>
+          큰 조직의 느린 의사결정 대신, <span class="hl">한 사람의 깊은 판단</span>.<br>
+          범용 솔루션 대신, <span class="hl-blue">현장 맞춤 AI 전환</span>.<br>
+          화려한 프레젠테이션 대신, <span class="hl">작동하는 시스템</span>.<br><br>
+          조용하지만 단단한 기술력.<br>
+          그것이 <span class="hl-blue">시니어의 방식</span>입니다.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02. LOGO SYSTEM -->
+<section>
+  <div class="section-num">02</div>
+  <div class="section-title">LOGO SYSTEM</div>
+  <div class="section-subtitle">
+    AX(AI Transformation)를 그라디언트로 강조하여 기술 전환의 에너지를 시각화합니다.
+    ENIOR는 은색 톤으로 시니어의 조용한 신뢰를 표현합니다.
+  </div>
+
+  <div class="logo-variants">
+    <div class="logo-card dark">
+      <div class="logo-text">
+        <span style="background:var(--ax-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">AX</span><span style="color:var(--ax-silver)">ENIOR</span>
+      </div>
+      <div class="logo-sub" style="color:var(--ax-mid)">AI Transformation Partner</div>
+      <div class="logo-label">PRIMARY — ON DARK</div>
+    </div>
+    <div class="logo-card light">
+      <div class="logo-text">
+        <span style="background:var(--ax-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">AX</span><span style="color:var(--ax-deep)">ENIOR</span>
+      </div>
+      <div class="logo-sub" style="color:var(--ax-mid)">AI Transformation Partner</div>
+      <div class="logo-label">ON LIGHT</div>
+    </div>
+    <div class="logo-card grad">
+      <div class="logo-text">
+        <span style="color:white">AX</span><span style="color:rgba(255,255,255,0.6)">ENIOR</span>
+      </div>
+      <div class="logo-sub" style="color:rgba(255,255,255,0.5)">AI Transformation Partner</div>
+      <div class="logo-label">ON GRADIENT</div>
+    </div>
+  </div>
+
+  <div class="icon-section">
+    <div style="margin-bottom:12px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ax-mid);letter-spacing:0.2em;text-transform:uppercase;">App Icon / Favicon</div>
+    <div class="ax-icon-grid">
+      <div class="ax-icon-item">
+        <div class="ax-icon-box v1"><span>AX</span></div>
+        <div class="ax-icon-label">GRADIENT</div>
+      </div>
+      <div class="ax-icon-item">
+        <div class="ax-icon-box v2">AX</div>
+        <div class="ax-icon-label">SOLID</div>
+      </div>
+      <div class="ax-icon-item">
+        <div class="ax-icon-box v3">AX</div>
+        <div class="ax-icon-label">LIGHT</div>
+      </div>
+      <div class="ax-icon-item">
+        <div class="ax-icon-box v4"><span>AX</span></div>
+        <div class="ax-icon-label">OUTLINE</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03. COLOR PALETTE -->
+<section style="background:var(--ax-white)">
+  <div class="section-num">03</div>
+  <div class="section-title">COLOR PALETTE</div>
+  <div class="section-subtitle">
+    딥 네이비 기반에 AI 블루→바이올렛 그라디언트. 차분하면서도 기술의 에너지가 느껴지는 팔레트.
+  </div>
+
+  <div class="color-palette">
+    <div class="color-swatch">
+      <div class="swatch-block" style="background:var(--ax-deep)"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Deep Space</div>
+        <div class="swatch-hex">#0A0E17</div>
+        <div class="swatch-role">주 배경</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="swatch-block" style="background:var(--ax-navy)"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Navy</div>
+        <div class="swatch-hex">#0F1628</div>
+        <div class="swatch-role">보조 배경</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="swatch-block" style="background:var(--ax-blue)"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">AX Blue</div>
+        <div class="swatch-hex">#3B82F6</div>
+        <div class="swatch-role">★ 브랜드 주색</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="swatch-block" style="background:var(--ax-violet)"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">AX Violet</div>
+        <div class="swatch-hex">#8B5CF6</div>
+        <div class="swatch-role">그라디언트 보조</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="swatch-block" style="background:var(--ax-silver)"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Silver</div>
+        <div class="swatch-hex">#94A3B8</div>
+        <div class="swatch-role">본문 텍스트</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04. TYPOGRAPHY -->
+<section>
+  <div class="section-num">04</div>
+  <div class="section-title">TYPOGRAPHY</div>
+  <div class="section-subtitle">
+    로고: Bebas Neue / 영문 카피: Sora / 한국어: Noto Sans KR / 기술 표기: JetBrains Mono
+  </div>
+
+  <div class="type-showcase">
+    <div class="type-row">
+      <div class="type-label">DISPLAY</div>
+      <div class="type-sample" style="font-family:'Bebas Neue';font-size:48px;letter-spacing:0.1em">AXENIOR</div>
+      <div class="type-meta">Bebas Neue<br>로고 전용</div>
+    </div>
+    <div class="type-row">
+      <div class="type-label">HEADING EN</div>
+      <div class="type-sample" style="font-family:'Sora';font-size:24px;font-weight:600;letter-spacing:0.02em">AI Transformation, Senior Expertise</div>
+      <div class="type-meta">Sora · SemiBold<br>영문 제목·슬로건</div>
+    </div>
+    <div class="type-row">
+      <div class="type-label">HEADING KR</div>
+      <div class="type-sample" style="font-family:'Noto Sans KR';font-size:24px;font-weight:700">AI 전환의 시니어 파트너</div>
+      <div class="type-meta">Noto Sans KR · Bold<br>한국어 제목</div>
+    </div>
+    <div class="type-row">
+      <div class="type-label">BODY</div>
+      <div class="type-sample" style="font-family:'Noto Sans KR';font-size:15px;font-weight:300;line-height:1.8;color:var(--ax-mid)">
+        Axenior는 제조 현장의 AI 전환을 설계하는 1인 전문 기술 기업입니다. SPC, SCADA, 품질 관리 시스템에 AI를 통합하여 현장이 실제로 작동하는 솔루션을 만듭니다.
+      </div>
+      <div class="type-meta">Noto Sans KR · Light<br>본문</div>
+    </div>
+    <div class="type-row">
+      <div class="type-label">MONO</div>
+      <div class="type-sample" style="font-family:'JetBrains Mono';font-size:14px;color:var(--ax-blue);letter-spacing:0.03em">axenior.tech — hello@axenior.tech</div>
+      <div class="type-meta">JetBrains Mono<br>URL, 기술 표기</div>
+    </div>
+  </div>
+</section>
+
+<!-- 05. SLOGAN -->
+<section style="background:var(--ax-light)">
+  <div class="section-num">05</div>
+  <div class="section-title">SLOGAN</div>
+  <div class="section-subtitle">상황별 슬로건 시스템.</div>
+
+  <div class="slogan-cards">
+    <div class="slogan-card recommended">
+      <div class="slogan-main">AI Transformation, Senior Expertise</div>
+      <div class="slogan-kr">AI 전환의 시니어 파트너</div>
+      <div class="slogan-use">PRIMARY — 공식 슬로건, 명함, 웹사이트 헤더</div>
+    </div>
+    <div class="slogan-card">
+      <div class="slogan-main">Where Experience Meets AI</div>
+      <div class="slogan-kr">경험이 AI를 만날 때</div>
+      <div class="slogan-use">NARRATIVE — 제안서, 소개 자료, 발표</div>
+    </div>
+    <div class="slogan-card">
+      <div class="slogan-main">DX is done. AX is now.</div>
+      <div class="slogan-kr">DX 다음, AX 시대</div>
+      <div class="slogan-use">CAMPAIGN — SNS, 마케팅, 배너 광고</div>
+    </div>
+    <div class="slogan-card">
+      <div class="slogan-main">One Senior. Full AX.</div>
+      <div class="slogan-kr">한 사람이면 충분합니다</div>
+      <div class="slogan-use">PERSONAL — 이메일 서명, 명함 뒷면</div>
+    </div>
+  </div>
+</section>
+
+<!-- 06. BUSINESS CARD -->
+<section>
+  <div class="section-num">06</div>
+  <div class="section-title">BUSINESS CARD</div>
+  <div class="section-subtitle">
+    앞면: 로고 + AX 정의. 뒷면: 연락처. 여백이 실력을 말합니다.
+  </div>
+
+  <div class="card-preview">
+    <div class="biz-card front">
+      <div class="card-logo">
+        <span class="ax">AX</span><span class="rest">ENIOR</span>
+      </div>
+      <div class="card-bottom">
+        <div class="card-slogan">AI Transformation, Senior Expertise</div>
+        <div class="card-ax-label">AX = AI TRANSFORMATION</div>
+      </div>
+    </div>
+    <div class="biz-card back">
+      <div class="card-back-top">
+        <div>
+          <div class="card-name-kr">홍 길 동</div>
+          <div class="card-title">대표 · AI Transformation Specialist</div>
+        </div>
+        <div class="card-back-logo">
+          <span style="color:var(--ax-blue)">AX</span><span style="color:var(--ax-silver)">ENIOR</span>
+        </div>
+      </div>
+      <div class="card-contact">
+        hello@axenior.tech<br>
+        +82 10-0000-0000<br>
+        axenior.tech
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07. TONE OF VOICE -->
+<section style="background:var(--ax-light)">
+  <div class="section-num">07</div>
+  <div class="section-title">TONE OF VOICE</div>
+  <div class="section-subtitle">Axenior가 말하는 방식. 조용하지만 확신 있는 시니어의 톤.</div>
+
+  <div class="tone-grid">
+    <div class="tone-card">
+      <div class="tone-do">WE ARE</div>
+      <div class="tone-word">Precise</div>
+      <div class="tone-desc">
+        군더더기 없이 핵심만.
+        "~해드리겠습니다" 대신
+        "해결했습니다."
+      </div>
+    </div>
+    <div class="tone-card">
+      <div class="tone-do">WE ARE</div>
+      <div class="tone-word">Grounded</div>
+      <div class="tone-desc">
+        현장을 압니다.
+        이론이 아니라
+        실제로 작동하는 것만 제안합니다.
+      </div>
+    </div>
+    <div class="tone-card">
+      <div class="tone-do">WE ARE</div>
+      <div class="tone-word">Senior</div>
+      <div class="tone-desc">
+        경험에서 나오는 판단.
+        "할 수 있습니다" 대신
+        "해본 적 있습니다."
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08. USE CASES -->
+<section>
+  <div class="section-num">08</div>
+  <div class="section-title">AX SERVICE AREAS</div>
+  <div class="section-subtitle">Axenior가 AI 전환(AX)을 수행하는 영역.</div>
+
+  <div class="usecase-grid">
+    <div class="usecase-card">
+      <div class="usecase-icon">🏭</div>
+      <div class="usecase-title">Manufacturing AX</div>
+      <div class="usecase-desc">SPC, SCADA, PLC 기반 제조 현장에 AI를 통합. 품질 예측, 이상 감지, 공정 최적화.</div>
+    </div>
+    <div class="usecase-card">
+      <div class="usecase-icon">📊</div>
+      <div class="usecase-title">Quality AX</div>
+      <div class="usecase-desc">IATF 16949 기반 품질 관리 시스템의 AI 전환. Smart Advisor, 관리도 자동 분석.</div>
+    </div>
+    <div class="usecase-card">
+      <div class="usecase-icon">💻</div>
+      <div class="usecase-title">Legacy AX</div>
+      <div class="usecase-desc">PowerBuilder 등 레거시 시스템을 현대 스택(React)으로 전환하며 AI 기능 내장.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 09. DOMAIN -->
+<section style="background:var(--ax-light)">
+  <div class="section-num">09</div>
+  <div class="section-title">DOMAIN & DIGITAL</div>
+  <div class="section-subtitle">추천 도메인과 디지털 채널.</div>
+
+  <div class="domain-list">
+    <div class="domain-item primary">
+      <div class="domain-name">axenior.tech</div>
+      <div class="domain-badge rec">★ 1순위</div>
+    </div>
+    <div class="domain-item primary">
+      <div class="domain-name">axenior.ai</div>
+      <div class="domain-badge rec">★ AI 강조</div>
+    </div>
+    <div class="domain-item">
+      <div class="domain-name">axenior.com</div>
+      <div class="domain-badge alt">보호 등록</div>
+    </div>
+    <div class="domain-item">
+      <div class="domain-name">axenior.co.kr</div>
+      <div class="domain-badge alt">국내용</div>
+    </div>
+    <div class="domain-item">
+      <div class="domain-name">axenior.io</div>
+      <div class="domain-badge alt">개발자 타겟</div>
+    </div>
+    <div class="domain-item">
+      <div class="domain-name">@axenior</div>
+      <div class="domain-badge alt">SNS 핸들</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="guide-footer">
+  <div class="footer-content">
+    <div class="footer-logo">
+      <span class="ax">AX</span><span class="rest">ENIOR</span>
+    </div>
+    <div class="footer-text">BRAND IDENTITY GUIDE — 2026</div>
+    <div class="footer-sub">AX = AI TRANSFORMATION · SENIOR EXPERTISE</div>
+  </div>
+</div>
+
+</body>
+</html>
