@@ -1,0 +1,22 @@
+name: Deploy to Hostinger
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOSTINGER_HOST }}
+          username: deploy
+          key: ${{ secrets.HOSTINGER_SSH_KEY }}
+          script: |
+            cd /home/deploy/axenior-www
+            git pull origin main
+            npm ci
+            npm run build
+            pm2 restart axenior-web
