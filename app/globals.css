@@ -1,26 +1,53 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* 브랜드 컬러 */
+  --color-deep-space: #0A0E17;
+  --color-navy: #0F1628;
+  --color-ax-blue: #3B82F6;
+  --color-ax-violet: #8B5CF6;
+  --color-silver: #94A3B8;
+  --color-ax-white: #F8F9FC;
+  --color-ax-light: #E8EDF5;
+
+  /* 폰트 패밀리 */
+  --font-bebas: var(--font-bebas-neue), cursive;
+  --font-sora: var(--font-sora), sans-serif;
+  --font-noto: var(--font-noto-sans-kr), sans-serif;
+  --font-jetbrains: var(--font-jetbrains-mono), monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #0A0E17;
+  color: #94A3B8;
+}
+
+/* 그리드 배경 */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(59, 130, 246, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* 그라디언트 텍스트 */
+.gradient-text {
+  background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 맥박 노드 애니메이션 */
+@keyframes pulse-node {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.6); }
+}
+
+.pulse-node {
+  animation: pulse-node 3s ease-in-out infinite;
 }
