@@ -1,12 +1,12 @@
 'use client'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 const NAV_LINKS = [
-  { href: '#about', label: 'About' },
-  { href: '#services', label: 'Services' },
-  { href: '#product', label: 'do-supply' },
-  { href: '#portfolio', label: 'Portfolio' },
-  { href: '#contact', label: 'Contact' },
+  { href: '/#about', label: 'About' },
+  { href: '/#services', label: 'Services' },
+  { href: '/#portfolio', label: 'Portfolio' },
+  { href: '/#contact', label: 'Contact' },
 ]
 
 export function Nav() {
@@ -27,28 +27,28 @@ export function Nav() {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#" className="font-bebas text-2xl tracking-widest">
+        <Link href="/" className="font-bebas text-2xl tracking-widest">
           <span className="gradient-text">AX</span>
           <span className="text-silver">ENIOR</span>
-        </a>
+        </Link>
         <ul className="hidden md:flex items-center gap-8">
           {NAV_LINKS.map(({ href, label }) => (
             <li key={href}>
-              <a
+              <Link
                 href={href}
                 className="font-sora text-sm text-silver hover:text-ax-white transition-colors"
               >
                 {label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
-        <a
-          href="#contact"
+        <Link
+          href="/#contact"
           className="font-sora text-sm px-4 py-2 rounded-lg bg-gradient-to-br from-ax-blue to-ax-violet text-white hover:opacity-90 transition-opacity"
         >
           문의하기
-        </a>
+        </Link>
       </div>
     </nav>
   )

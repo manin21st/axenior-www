@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { ScrollFade } from '@/components/ScrollFade'
 
 // ⭐ 영상은 개별 영상 ID 가 아니라 공개 재생목록으로 embed 한다. 영상을 다시 올려 ID 가 바뀌어도 재생목록만 갱신하면 이 코드는 그대로 동작한다.
@@ -16,18 +17,21 @@ const POINTS = [
 
 export function Product() {
   return (
-    <section id="product" className="py-32 bg-deep-space border-t border-white/5">
+    <section id="product" className="pt-16 pb-32 bg-deep-space">
       <div className="max-w-6xl mx-auto px-6">
         <ScrollFade>
+          <Link href="/#portfolio" className="inline-block font-noto text-sm text-silver hover:text-ax-white transition-colors mb-10">
+            ← 포트폴리오
+          </Link>
           <p className="font-jetbrains text-xs text-ax-blue tracking-[0.3em] mb-4">
-            PRODUCT · DO-SUPPLY
+            DO FRAMEWORK AX · DO-SUPPLY
           </p>
         </ScrollFade>
 
         <ScrollFade delay={0.1}>
-          <h2 className="font-sora text-4xl md:text-5xl font-bold text-ax-white mb-4">
+          <h1 className="font-sora text-4xl md:text-5xl font-bold text-ax-white mb-4">
             협력사 SCM, <span className="gradient-text whitespace-nowrap">do-supply</span>
-          </h2>
+          </h1>
         </ScrollFade>
 
         <ScrollFade delay={0.15}>
