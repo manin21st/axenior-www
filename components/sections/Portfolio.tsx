@@ -14,7 +14,7 @@ interface Project {
 const PROJECTS: Project[] = [
   {
     tag: 'Do Framework AX',
-    title: '현장을 아는 협력사 SCM',
+    title: '현장을 아는 협력사 SCM — 일하기 편한 화면과 AI 도우미',
     year: '2026',
     href: '/do-supply',
     thumb: '/portfolio/do-supply-thumb.jpg',
