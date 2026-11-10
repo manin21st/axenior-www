@@ -6,7 +6,7 @@ interface Project {
   tag: string
   title: string
   year: string
-  /** 상세 페이지 경로. 있으면 썸네일과 「더보기」를 붙인다. */
+  /** 상세 페이지 경로. 썸네일을 클릭하면 이 페이지로 이동한다. */
   href?: string
   thumb?: string
 }
@@ -14,12 +14,12 @@ interface Project {
 const PROJECTS: Project[] = [
   {
     tag: 'Do Framework AX',
-    title: '협력사 SCM do-supply',
+    title: '현장을 아는 협력사 SCM',
     year: '2026',
     href: '/do-supply',
     thumb: '/portfolio/do-supply-thumb.jpg',
   },
-  { tag: 'Quality AX', title: '자동차 부품사 SPC AI 자동화 · IATF 품질 관리 Smart Advisor', year: '2025' },
+  { tag: 'Manufacturing & Quality AX', title: '자동차 부품사 SPC AI 자동화 · IATF 품질 관리 Smart Advisor', year: '2025' },
   { tag: 'Legacy AX', title: 'PowerBuilder → React 전환 프로젝트', year: '2024' },
 ]
 
@@ -59,7 +59,7 @@ export function Portfolio() {
                   <Link href={project.href} className="block mb-4 rounded-lg overflow-hidden border border-white/10">
                     <Image
                       src={project.thumb}
-                      alt={`${project.title} 소개 영상`}
+                      alt={`${project.title} 소개 영상 — 상세 페이지로 이동`}
                       width={640}
                       height={360}
                       className="w-full h-auto group-hover:opacity-90 transition-opacity"
@@ -70,14 +70,6 @@ export function Portfolio() {
                   {project.title}
                 </h3>
                 <div className="mt-4 w-8 h-px bg-ax-blue/30 group-hover:w-full transition-all duration-500" />
-                {project.href && (
-                  <Link
-                    href={project.href}
-                    className="mt-4 self-start font-noto text-sm text-ax-blue hover:text-ax-light transition-colors"
-                  >
-                    더보기 →
-                  </Link>
-                )}
               </div>
             </ScrollFade>
           ))}
