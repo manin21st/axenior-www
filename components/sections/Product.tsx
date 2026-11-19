@@ -1,13 +1,12 @@
 import Link from 'next/link'
 import { ScrollFade } from '@/components/ScrollFade'
+import { contactHref } from '@/lib/contactTopics'
 
 // ⭐ 영상은 개별 영상 ID 가 아니라 공개 재생목록으로 embed 한다. 영상을 다시 올려 ID 가 바뀌어도 재생목록만 갱신하면 이 코드는 그대로 동작한다.
 // ⛔ 2편(AI 도우미)과 AI 기능 영상은 일부 공개(메일 수신자 전용)이므로 이 페이지에 넣지 않는다. 공개 재생목록에는 공개 영상만 들어 있다.
 const INTRO_PLAYLIST = 'PLIOdJugK8Ocs'
 const CLIPS_PLAYLIST = 'PLLvI5VDpt2ik'
 const CHANNEL_URL = 'https://www.youtube.com/@axenior-kr'
-const TRIAL_MAILTO =
-  'mailto:contact@axenior.kr?subject=' + encodeURIComponent('[체험 계정 요청] do-supply')
 
 const POINTS = [
   { tag: 'Workspace', title: '일하기 편한 화면', desc: '화면 분할·새 창, 그리드 정렬·필터·엑셀, 화면 연동' },
@@ -68,12 +67,11 @@ export function Product() {
 
             <ScrollFade delay={0.5}>
               <div className="flex flex-wrap gap-3 pt-2">
-                <a
-                  href={TRIAL_MAILTO}
+                <Link href={contactHref('trial')}
                   className="font-noto text-sm px-5 py-3 rounded-lg bg-gradient-to-br from-ax-blue to-ax-violet text-white hover:opacity-90 transition-opacity"
                 >
                   체험 계정 요청
-                </a>
+                </Link>
                 <a
                   href={`https://www.youtube.com/playlist?list=${CLIPS_PLAYLIST}`}
                   target="_blank"

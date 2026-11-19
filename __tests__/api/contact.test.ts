@@ -36,16 +36,42 @@ describe('POST /api/contact', () => {
     expect(res.status).toBe(400)
   })
 
+  it('returns 400 when subject is missing or blank', async () => {
+    expect((await POST(makeRequest({ name: 'Test', email: 'a@b.com', message: 'hi' }))).status).toBe(400)
+    expect((await POST(makeRequest({ name: 'Test', email: 'a@b.com', subject: '  ', message: 'hi' }))).status).toBe(400)
+  })
+
+  it('returns 400 when subject is too long', async () => {
+    const res = await POST(makeRequest({ name: 'Test', email: 'a@b.com', subject: 'x'.repeat(101), message: 'hi' }))
+    expect(res.status).toBe(400)
+  })
+
   it('sends email and returns 200 on valid input', async () => {
     mockSend.mockResolvedValueOnce(undefined)
-    const res = await POST(makeRequest({ name: 'Test', email: 'a@b.com', message: 'Hello' }))
+    const res = await POST(makeRequest({ name: 'Test', email: 'a@b.com', subject: '도입 상담', message: 'Hello' }))
     expect(res.status).toBe(200)
-    expect(mockSend).toHaveBeenCalledWith({ name: 'Test', email: 'a@b.com', message: 'Hello' })
+    expect(mockSend).toHaveBeenCalledWith({ name: 'Test', email: 'a@b.com', subject: '도입 상담', message: 'Hello' })
+  })
+
+  it('prefixes the subject by topic key, and ignores unknown keys', async () => {
+    mockSend.mockResolvedValue(undefined)
+    await POST(makeRequest({ name: 'T', email: 'a@b.com', subject: '체험 부탁드립니다', message: 'm', topic: 'trial' }))
+    expect(mockSend).toHaveBeenLastCalledWith(expect.objectContaining({ subject: '[체험 계정 요청] 체험 부탁드립니다' }))
+    await POST(makeRequest({ name: 'T', email: 'a@b.com', subject: '일정', message: 'm', topic: 'course' }))
+    expect(mockSend).toHaveBeenLastCalledWith(expect.objectContaining({ subject: '[교육 과정 문의] 일정' }))
+    await POST(makeRequest({ name: 'T', email: 'a@b.com', subject: '일반', message: 'm', topic: '[관리자]' }))
+    expect(mockSend).toHaveBeenLastCalledWith(expect.objectContaining({ subject: '일반' }))
+  })
+
+  it('replaces line breaks in the subject', async () => {
+    mockSend.mockResolvedValueOnce(undefined)
+    await POST(makeRequest({ name: 'T', email: 'a@b.com', subject: 'a\r\nBcc: x@y.z', message: 'm' }))
+    expect(mockSend).toHaveBeenLastCalledWith(expect.objectContaining({ subject: 'a Bcc: x@y.z' }))
   })
 
   it('returns 500 when mailer throws', async () => {
     mockSend.mockRejectedValueOnce(new Error('SMTP error'))
-    const res = await POST(makeRequest({ name: 'Test', email: 'a@b.com', message: 'Hello' }))
+    const res = await POST(makeRequest({ name: 'Test', email: 'a@b.com', subject: 's', message: 'Hello' }))
     expect(res.status).toBe(500)
   })
 })

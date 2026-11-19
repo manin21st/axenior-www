@@ -1,11 +1,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { ScrollFade } from '@/components/ScrollFade'
+import { contactHref } from '@/lib/contactTopics'
 
 // ⭐ 강의 영상은 재생목록으로 embed 한다(`Product.tsx` 와 같은 방식). 새 강의는 재생목록에만 추가하면 이 코드는 그대로 동작한다.
 // ⚠️ 재생목록 ID 가 비어 있으면 영상 대신 썸네일과 「영상 준비 중」을 보인다.
 const COURSE_PLAYLIST = 'PLU9AQn-6ZTjk'
-const INQUIRY_MAILTO = 'mailto:contact@axenior.kr?subject=' + encodeURIComponent('[교육 과정 문의] AX Engineering')
 
 /** 커리큘럼. `ready` 는 강의 영상이 재생목록에 있는 강의다. */
 const LECTURES: { no: string; title: string; desc: string; ready?: boolean }[] = [
@@ -108,12 +108,11 @@ export function Course() {
 
         <ScrollFade>
           <div className="mt-12">
-            <a
-              href={INQUIRY_MAILTO}
+            <Link href={contactHref('course')}
               className="inline-block font-noto text-sm px-5 py-3 rounded-lg bg-gradient-to-br from-ax-blue to-ax-violet text-white hover:opacity-90 transition-opacity"
             >
               교육 과정 문의
-            </a>
+            </Link>
           </div>
         </ScrollFade>
       </div>

@@ -1,13 +1,23 @@
 'use client'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ScrollFade } from '@/components/ScrollFade'
+import { CONTACT_TOPICS, SUBJECT_MAX, isContactTopic, type ContactTopic } from '@/lib/contactTopics'
 
 type FormState = 'idle' | 'submitting' | 'success' | 'error'
 
 export function ContactSection() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
+  const [subject, setSubject] = useState('')
   const [message, setMessage] = useState('')
+  /** 상세 페이지 버튼으로 들어오면 `?topic=` 으로 정해진다. 제목 앞 머리말로 고정된다. */
+  const [topic, setTopic] = useState<ContactTopic | null>(null)
+
+  // ⭐ 주소의 `?topic=` 을 읽는다. 상세 페이지에서 넘어올 때마다 컴포넌트가 새로 마운트되므로 마운트 시 한 번 읽는다.
+  useEffect(() => {
+    const t = new URLSearchParams(window.location.search).get('topic')
+    if (isContactTopic(t)) setTopic(t)
+  }, [])
   const [state, setState] = useState<FormState>('idle')
   const [errorMessage, setErrorMessage] = useState('')
 
@@ -20,7 +30,7 @@ export function ContactSection() {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, message }),
+        body: JSON.stringify({ name, email, subject, message, topic }),
       })
       const data = await res.json()
 
@@ -33,6 +43,7 @@ export function ContactSection() {
       setState('success')
       setName('')
       setEmail('')
+      setSubject('')
       setMessage('')
     } catch {
       setState('error')
@@ -102,6 +113,31 @@ export function ContactSection() {
                   required
                   className={inputClass}
                 />
+                <div className="flex items-stretch gap-2">
+                  {topic && (
+                    <span className="shrink-0 flex items-center gap-2 rounded-lg border border-ax-blue/40 bg-ax-blue/10 px-3 font-noto text-sm text-ax-light">
+                      {CONTACT_TOPICS[topic]}
+                      <button
+                        type="button"
+                        onClick={() => setTopic(null)}
+                        aria-label="머리말 빼고 일반 문의로 보내기"
+                        title="일반 문의로 보내기"
+                        className="text-silver hover:text-ax-white"
+                      >
+                        ✕
+                      </button>
+                    </span>
+                  )}
+                  <input
+                    type="text"
+                    placeholder="제목"
+                    value={subject}
+                    onChange={(e) => setSubject(e.target.value)}
+                    required
+                    maxLength={SUBJECT_MAX}
+                    className={`${inputClass} min-w-0`}
+                  />
+                </div>
                 <textarea
                   placeholder="문의 내용"
                   value={message}
