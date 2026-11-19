@@ -4,13 +4,13 @@ import { ScrollFade } from '@/components/ScrollFade'
 
 // ⭐ 강의 영상은 재생목록으로 embed 한다(`Product.tsx` 와 같은 방식). 새 강의는 재생목록에만 추가하면 이 코드는 그대로 동작한다.
 // ⚠️ 재생목록 ID 가 비어 있으면 영상 대신 썸네일과 「영상 준비 중」을 보인다.
-const COURSE_PLAYLIST = ''
+const COURSE_PLAYLIST = 'PLU9AQn-6ZTjk'
 const INQUIRY_MAILTO = 'mailto:contact@axenior.kr?subject=' + encodeURIComponent('[교육 과정 문의] AX Engineering')
 
 /** 커리큘럼. `ready` 는 강의 영상이 재생목록에 있는 강의다. */
 const LECTURES: { no: string; title: string; desc: string; ready?: boolean }[] = [
   { no: '01', title: '요구사항 정의에서 데이터 설계까지', desc: '요구사항 정의서 · 프로세스 정의 · 화면 설계 · 테이블 정의를 AI와 함께 작성', ready: true },
-  { no: '02', title: '운영 환경 구성', desc: '빈 서버에서 SSH 키 인증 · 방화벽 · 도메인 · HTTPS 공개까지', ready: true },
+  { no: '02', title: '운영 환경 구성', desc: '빈 서버에서 SSH 키 인증 · 방화벽 · 도메인 · HTTPS 공개까지' },
   { no: '03', title: '데이터베이스 구축', desc: '테이블 정의서를 실제 DB 로 — 키 · 관계 · 코드 체계' },
   { no: '04', title: 'API · 로그인', desc: '업무 규칙을 API 검증으로 구현하고 권한을 분리' },
   { no: '05', title: '화면 구현', desc: '화면 설계서대로 조회 · 등록 화면 구현' },
