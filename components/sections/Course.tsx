@@ -10,7 +10,7 @@ const COURSE_PLAYLIST = 'PLU9AQn-6ZTjk'
 /** 커리큘럼. `ready` 는 강의 영상이 재생목록에 있는 강의다. */
 const LECTURES: { no: string; title: string; desc: string; ready?: boolean }[] = [
   { no: '01', title: '요구사항 정의에서 데이터 설계까지', desc: '요구사항 정의서 · 프로세스 정의 · 화면 설계 · 테이블 정의를 AI와 함께 작성', ready: true },
-  { no: '02', title: '내 첫 서버 공개', desc: '내 PC 안 연습 서버에 AI 를 설치하고, AI 가 만든 페이지를 HTTPS 주소로 공개' },
+  { no: '02', title: '내 첫 서버 공개', desc: '내 PC 안 연습 서버에 AI 를 설치하고, AI 가 만든 페이지를 HTTPS 주소로 공개', ready: true },
   { no: '03', title: '데이터베이스 구축', desc: '연습 서버에 DB 를 설치하고 테이블 정의서대로 생성 — 키 · 관계 · 코드 체계' },
   { no: '04', title: 'API · 로그인', desc: '업무 규칙을 API 검증으로 구현하고 권한을 분리' },
   { no: '05', title: '화면 구현', desc: '화면 설계서대로 조회 · 등록 화면 구현' },
