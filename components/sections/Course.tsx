@@ -46,7 +46,7 @@ export function Course() {
           <p className="font-noto text-silver mb-3 max-w-2xl [word-break:keep-all]">
             AI 시대에도 시스템의 품질은 설계 산출물이 결정합니다. AI가 초안을, 사람이 결정을 맡는 방식으로 제조 시스템을 직접 구축합니다.
           </p>
-          <p className="font-noto text-sm text-silver/60 mb-12">대상: LLM 사용 경험은 있고 시스템 구축 경험은 없는 실무자</p>
+          <p className="font-noto text-sm text-silver/60 mb-12">대상: LLM 사용 경험은 있고 시스템 구축 경험은 없는 실무자 · 바이브 코딩 초보자</p>
         </ScrollFade>
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start mb-20">
