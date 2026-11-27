@@ -10,11 +10,11 @@ const COURSE_PLAYLIST = 'PLU9AQn-6ZTjk'
 /** 커리큘럼. `ready` 는 강의 영상이 재생목록에 있는 강의다. */
 const LECTURES: { no: string; title: string; desc: string; ready?: boolean }[] = [
   { no: '01', title: '요구사항 정의에서 데이터 설계까지', desc: '요구사항 정의서 · 프로세스 정의 · 화면 설계 · 테이블 정의를 AI와 함께 작성', ready: true },
-  { no: '02', title: '운영 환경 구성', desc: '빈 서버에서 SSH 키 인증 · 방화벽 · 도메인 · HTTPS 공개까지' },
-  { no: '03', title: '데이터베이스 구축', desc: '테이블 정의서를 실제 DB 로 — 키 · 관계 · 코드 체계' },
+  { no: '02', title: '내 첫 서버 공개', desc: '내 PC 안 연습 서버에 AI 를 설치하고, AI 가 만든 페이지를 HTTPS 주소로 공개' },
+  { no: '03', title: '데이터베이스 구축', desc: '연습 서버에 DB 를 설치하고 테이블 정의서대로 생성 — 키 · 관계 · 코드 체계' },
   { no: '04', title: 'API · 로그인', desc: '업무 규칙을 API 검증으로 구현하고 권한을 분리' },
   { no: '05', title: '화면 구현', desc: '화면 설계서대로 조회 · 등록 화면 구현' },
-  { no: '06', title: '형상 관리 · 자동 배포', desc: 'git 과 배포 파이프라인으로 변경 이력과 배포를 관리' },
+  { no: '06', title: '실제 서버로 이전 · 자동 배포', desc: 'VPS · 도메인 · SSH 키 · 방화벽을 갖춘 운영 서버로 옮기고, git 과 배포 파이프라인으로 관리' },
   { no: '07', title: '앱 안 AI', desc: '자연어 질의 → DB 조회 → 화면 연결' },
   { no: '08', title: '운영 · 백업 · 보안', desc: '백업 · 복원, 권한 관리, 보안 점검으로 운영 체계 확립' },
 ]
